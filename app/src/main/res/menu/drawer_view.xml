@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+   <group android:checkableBehavior="single">
+       <item android:id="@+id/nav_home"
+             android:icon="@mipmap/ic_launcher"
+             android:title="主页"
+           ></item>
+       <item android:id="@+id/nav_search"
+             android:icon="@mipmap/ic_launcher"
+             android:title="搜索"
+           ></item>
+       <item android:id="@+id/nav_message"
+             android:icon="@mipmap/ic_launcher"
+             android:title="消息"
+           ></item>
+   </group>
+    <item  android:title="更多选项----">
+        <menu >
+            <item android:icon="@mipmap/ic_launcher"
+                  android:title="item 1"></item>
+            <item android:icon="@mipmap/ic_launcher"
+                  android:title="item 2"></item>
+        </menu>
+    </item>
+</menu>
