@@ -27,10 +27,11 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     public void setContentView(@LayoutRes int layoutResID) {
         super.setContentView(layoutResID);
+        ButterKnife.bind(this);
         initToolBar();
     }
 
-    private void initToolBar() {
+    protected void initToolBar() {
         this.toolbar= ButterKnife.findById(this, R.id.toolbar);
         if(toolbar!=null){
             this.setSupportActionBar(toolbar);
@@ -39,11 +40,13 @@ public class BaseActivity extends AppCompatActivity {
             this.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    BaseActivity.this.finish();
+                        BaseActivity.this.finish();
+                    overridePendingTransition(R.anim.open_scale,R.anim.close_scale);
                 }
             });
         }
     }
+
 
     @Override
     public void onPostCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
@@ -77,4 +80,9 @@ public class BaseActivity extends AppCompatActivity {
         this.setTitle(this.getString(resid));
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+    }
 }

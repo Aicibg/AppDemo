@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:app="http://schemas.android.com/apk/res-auto">
-   <item android:id="@+id/item1"
-         android:title="item1"
+   <item android:id="@+id/item_main"
+         android:title="主页"
          android:orderInCategory="10"
          app:showAsAction="never"
        >
 
    </item>
-    <item android:id="@+id/item2"
-          android:title="item2"
-
-          android:orderInCategory="100">
+    <!--android:orderInCategory--> actionbar里每个item的优先级，值越大优先级越低，actionbar地方不够就会放到overflow中-->
+    <item android:id="@+id/item_personinfo"
+          android:title="个人中心"
+          android:orderInCategory="100"
+          app:showAsAction="never">
 
     </item>
 </menu>

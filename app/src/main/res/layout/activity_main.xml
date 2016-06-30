@@ -17,9 +17,16 @@
        android:layout_width="wrap_content"
        android:layout_height="match_parent"
        android:layout_gravity="start"
+       android:gravity="center_horizontal"
        app:headerLayout="@layout/nav_header"
        app:menu="@menu/drawer_view"
        >
-
+    <TextView
+        android:layout_gravity="bottom"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textSize="22sp"
+        android:text="设置"/>
    </android.support.design.widget.NavigationView>
 </android.support.v4.widget.DrawerLayout>

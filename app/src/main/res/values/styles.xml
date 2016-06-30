@@ -12,17 +12,21 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:actionOverflowMenuStyle">@style/OverlayMenuStyle</item>
-        <item name="android:actionOverflowButtonStyle">@style/Widget.AppCompat.ActionButton.Overflow</item>
+        <item name="android:actionMenuTextColor">@color/actionMenuText</item>
+        <item name="actionOverflowMenuStyle">@style/OverlayMenuStyle</item>
+        <item name="android:actionOverflowButtonStyle">@style/OverflayButtonStyle</item>
     </style>
 
     <style name="OverlayMenuStyle" parent="Widget.AppCompat.Light.PopupMenu.Overflow">
-        <item name="android:colorPrimary">@color/colorPrimary</item>
-        <item name="android:colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="overlapAnchor">false</item>
+        <item name="android:dropDownHorizontalOffset">0dp</item>
+        <item name="android:dropDownVerticalOffset">0dp</item>
+        <item name="android:width">50dp</item>
+        <item name="android:layout_width">50dp</item>
+        <item name="android:textColor">@color/actionMenuText</item>
     </style>
 
     <style name="OverflayButtonStyle" parent="Widget.AppCompat.ActionButton.Overflow">
-        <item name="android:colorPrimary">@color/colorPrimary</item>
-        <item name="android:colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="android:src">@mipmap/ic_launcher</item>
     </style>
 </resources>
