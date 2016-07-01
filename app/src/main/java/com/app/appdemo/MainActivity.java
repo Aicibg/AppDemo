@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
@@ -15,6 +17,8 @@ import android.view.View;
 
 import com.app.appdemo.activity.BaseActivity;
 import com.app.appdemo.activity.SecondActivity;
+import com.app.appdemo.activity.ThirdActivity;
+import com.app.appdemo.adapter.MyPageAdapter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -27,6 +31,11 @@ public class MainActivity extends BaseActivity {
     NavigationView mNavView;
     @BindView(R.id.toolbar)
     Toolbar mtoolbar;
+    @BindView(R.id.viewpage)
+    ViewPager mViewPager;
+    @BindView(R.id.tabs)
+    TabLayout mTabLayout;
+    private MyPageAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +54,16 @@ public class MainActivity extends BaseActivity {
                 }
             });
         }
+        if(mViewPager!=null){
+            setUpViewPage();
+        }
+        mTabLayout.setupWithViewPager(mViewPager);
+    }
+
+    private void setUpViewPage() {
+        adapter=new MyPageAdapter(getSupportFragmentManager());
+
+        mViewPager.setAdapter(adapter);
     }
 
     //侧滑菜单点击监听
@@ -63,8 +82,9 @@ public class MainActivity extends BaseActivity {
                           overridePendingTransition(R.anim.anim_right_in,R.anim.anim_left_out);
                       break;
                       case R.id.nav_search:
-                          intent.putExtra("title","搜索");
-                          startActivity(intent);
+                          Intent intent1=new Intent(MainActivity.this, ThirdActivity.class);
+                          intent1.putExtra("title","搜索");
+                          startActivity(intent1);
                           overridePendingTransition(R.anim.anim_right_in,R.anim.anim_left_out);
                        break;
                 }
@@ -86,7 +106,8 @@ public class MainActivity extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
               case R.id.item_main:
-
+                 start(MainActivity.this);
+                  finish();
               break;
               case R.id.item_personinfo:
 

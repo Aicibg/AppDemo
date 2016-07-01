@@ -2,6 +2,7 @@ package com.app.appdemo.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.animation.Animation;
@@ -19,7 +20,7 @@ import com.app.appdemo.Utils.Constants;
  */
 public class WelcomeActivity extends BaseActivity {
    private Animation anim;
-
+   private  Handler mHandler=new Handler();
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,11 +63,19 @@ public class WelcomeActivity extends BaseActivity {
         if(MyApplication.isFirstOpen()){
             MyApplication.setFirstOpen();
             startActivity(new Intent(WelcomeActivity.this, GuideActivity.class));
+            finish();
+            overridePendingTransition(R.anim.anim_right_in,R.anim.anim_left_out);
         }else{
-            startActivity(new Intent(WelcomeActivity.this,MainActivity.class));
-        }
-        finish();
-        overridePendingTransition(R.anim.anim_right_in,R.anim.anim_left_out);
+
+                    mHandler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            startActivity(new Intent(WelcomeActivity.this,MainActivity.class));
+                            finish();
+                            overridePendingTransition(R.anim.welcome_alpha_in,R.anim.close_alpha);
+                        }
+                    },1000);
+                }
     }
 
     @Override

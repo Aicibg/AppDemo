@@ -41,7 +41,7 @@ public class BaseActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                         BaseActivity.this.finish();
-                    overridePendingTransition(R.anim.open_scale,R.anim.close_scale);
+                    overridePendingTransition(R.anim.close_scale,R.anim.close_scale);
                 }
             });
         }
