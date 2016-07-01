@@ -10,7 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
-
         </activity>
         <activity android:name=".activity.WelcomeActivity">
             <intent-filter>
@@ -22,6 +21,8 @@
         <activity android:name=".activity.SecondActivity">
         </activity>
         <activity android:name=".activity.GuideActivity">
+        </activity>
+        <activity android:name=".activity.ThirdActivity">
         </activity>
     </application>
 
