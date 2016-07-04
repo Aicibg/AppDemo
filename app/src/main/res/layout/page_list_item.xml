@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="horizontal"
-              android:padding="@dimen/guide_btn_padding"
+              android:padding="@dimen/list_linearlayout_padding"
               android:layout_width="match_parent"
-              android:gravity="center_horizontal"
-              android:layout_height="match_parent">
+              android:gravity="center_vertical"
+              android:layout_height="wrap_content">
     <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/civ_avater"
         android:layout_width="40dp"
         android:layout_height="40dp"/>
     
   <TextView
+      android:layout_marginLeft="@dimen/list_item_textview_margin"
+      android:id="@+id/tv_text1"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"/>
 </LinearLayout>

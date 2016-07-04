@@ -3,22 +3,27 @@ package com.app.appdemo;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.app.appdemo.activity.BaseActivity;
 import com.app.appdemo.activity.SecondActivity;
 import com.app.appdemo.activity.ThirdActivity;
 import com.app.appdemo.adapter.MyPageAdapter;
+import com.app.appdemo.fragment.CheeseListFragment;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -35,6 +40,10 @@ public class MainActivity extends BaseActivity {
     ViewPager mViewPager;
     @BindView(R.id.tabs)
     TabLayout mTabLayout;
+
+    private boolean isExit=false;
+    private TimerTask mTimerTask=null;
+    private Timer mTimer=null;
     private MyPageAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +51,7 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
         initToolBar();
         setTitle("主页");
-
+        mTimer=new Timer();
         if(mNavView!=null){
             setUpDrawerCotent(mNavView);
         }
@@ -62,7 +71,9 @@ public class MainActivity extends BaseActivity {
 
     private void setUpViewPage() {
         adapter=new MyPageAdapter(getSupportFragmentManager());
-
+        adapter.addFragment(new CheeseListFragment(),"CateGory 1");
+        adapter.addFragment(new CheeseListFragment(),"CateGory 2");
+        adapter.addFragment(new CheeseListFragment(),"CateGory 3");
         mViewPager.setAdapter(adapter);
     }
 
@@ -123,5 +134,28 @@ public class MainActivity extends BaseActivity {
 
      public static void start(Activity activity){
         activity.startActivity(new Intent(activity,MainActivity.class));
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(mDrawerLayout.isDrawerOpen(mNavView)){
+            mDrawerLayout.closeDrawers();
+        }else{
+            if(isExit){
+                finish();
+                MyApplication.exit();
+            }else {
+                isExit=true;
+                Toast.makeText(MainActivity.this,"再按一次退出",Toast.LENGTH_SHORT).show();
+                mTimerTask=new TimerTask() {
+                    @Override
+                    public void run() {
+                        isExit=false;
+                    }
+                };
+                mTimer.schedule(mTimerTask,2000);
+            }
+        }
+
     }
 }

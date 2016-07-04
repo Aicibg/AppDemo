@@ -25,9 +25,9 @@ public class WelcomeActivity extends BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         View view= View.inflate(this,R.layout.activity_welcome,null);
+        setContentView(view);
 
         getScreenSize();
-        setContentView(view);
         initAnim();
         view.startAnimation(anim);
     }

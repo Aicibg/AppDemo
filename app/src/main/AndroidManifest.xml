@@ -24,6 +24,8 @@
         </activity>
         <activity android:name=".activity.ThirdActivity">
         </activity>
+        <activity android:name=".activity.CheeseDetailActivity">
+        </activity>
     </application>
 
 </manifest>

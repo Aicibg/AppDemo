@@ -15,16 +15,23 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
+            app:theme="@style/AppTheme.ToolBar"
             app:popupTheme="@style/AppOverlay"
             app:layout_scrollFlags="scroll|enterAlways|snap"
             >
         </android.support.v7.widget.Toolbar>
         
-        <TableLayout
+        <android.support.design.widget.TabLayout
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            ></TableLayout>
+            app:tabSelectedTextColor="@android:color/holo_orange_dark"
+            app:tabIndicatorColor="#FF00FF00"
+            app:tabTextColor="@color/white"
+            app:tabGravity="center"
+            >
+
+        </android.support.design.widget.TabLayout>
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.view.ViewPager

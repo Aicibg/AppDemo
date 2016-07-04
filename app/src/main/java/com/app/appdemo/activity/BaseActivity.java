@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.app.appdemo.MyApplication;
 import com.app.appdemo.R;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 
@@ -27,6 +28,7 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     public void setContentView(@LayoutRes int layoutResID) {
         super.setContentView(layoutResID);
+        MyApplication.addActivity(this);
         ButterKnife.bind(this);
         initToolBar();
     }

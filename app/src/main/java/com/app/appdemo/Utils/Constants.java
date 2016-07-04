@@ -1,5 +1,9 @@
 package com.app.appdemo.Utils;
 
+import com.app.appdemo.R;
+
+import java.util.Random;
+
 /**
  * @FileName: com.app.appdemo.Utils.Constants.java
  * Description:
@@ -9,6 +13,23 @@ public class Constants {
 
     public static  int SCREEN_WIDTH;
     public static  int SCREEN_HEIGHT;
+    private static final Random random=new Random();
+
+    public static int getRandomCheeseDrawable(){
+        switch (random.nextInt(5)){
+            default:
+              case 0:
+                return R.mipmap.cheese_1;
+              case 1:
+                  return R.mipmap.cheese_2;
+              case 2:
+                  return R.mipmap.cheese_3;
+              case 3:
+                  return R.mipmap.cheese_4;
+              case 4:
+                  return R.mipmap.cheese_5;
+        }
+    }
 
     public static final String[] scheessString={
             "Abbaye de Belloc", "Abbaye du Mont des Cats", "Abertam", "Abondance", "Ackawi",
