@@ -14,6 +14,7 @@ public class ThirdActivity extends BaseActivity {
     @BindView(R.id.roll_view_pagr)
     RollPagerView mRollPagerView;
     private RollpageAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

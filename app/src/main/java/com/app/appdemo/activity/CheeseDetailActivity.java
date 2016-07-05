@@ -1,8 +1,10 @@
 package com.app.appdemo.activity;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.view.Menu;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import com.app.appdemo.R;
 import com.app.appdemo.Utils.Constants;
@@ -21,6 +23,9 @@ public class CheeseDetailActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cheese_detail);
+        if(Build.VERSION.SDK_INT>= Build.VERSION_CODES.KITKAT){
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        }
         final  String cheeseName=getIntent().getStringExtra(EXTRA_NAME);
         initToolBar();
         mCollapsingToolbarLayout.setTitle(cheeseName);

@@ -1,6 +1,8 @@
 package com.app.appdemo.activity;
 
+import android.annotation.TargetApi;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.LayoutRes;
@@ -54,19 +56,25 @@ public class BaseActivity extends AppCompatActivity {
     public void onPostCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
         super.onPostCreate(savedInstanceState, persistentState);
         //沉浸式状态栏
-         this.setTranslucentStatus(true);
-        this.mTintmanger=new SystemBarTintManager(this);
-        this.mTintmanger.setStatusBarTintEnabled(true);
-        this.mTintmanger.setStatusBarTintColor(this.getResources().getColor(R.color.colorPrimaryDark));
+        if(Build.VERSION.SDK_INT>= Build.VERSION_CODES.KITKAT){
+            this.setTranslucentStatus(true);
+            this.mTintmanger=new SystemBarTintManager(this);
+            this.mTintmanger.setStatusBarTintEnabled(true);
+            this.mTintmanger.setTintColor(Color.parseColor("#3F51B5"));
+            this.mTintmanger.setStatusBarTintResource(R.color.colorPrimaryDark);
+           // this.mTintmanger.setNavigationBarTintColor(Color.BLACK);
+        }
     }
 
+    @TargetApi(Build.VERSION_CODES.KITKAT)
     private void setTranslucentStatus(boolean b) {
         Window w=this.getWindow();
         WindowManager.LayoutParams params=w.getAttributes();
+        final int bits=WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
         if(b){
-            params.flags |=67108864;
+            params.flags |=bits;
         }else{
-            params.flags &=67108865;
+            params.flags &=~bits;
         }
         w.setAttributes(params);
     }

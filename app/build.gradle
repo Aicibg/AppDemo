@@ -2,9 +2,10 @@ apply plugin: 'com.android.application'
 apply plugin: 'android-apt'
 
 android {
+    signingConfigs {
+    }
     compileSdkVersion 24
     buildToolsVersion "24.0.0"
-
     defaultConfig {
         applicationId "com.app.appdemo"
         minSdkVersion 15
@@ -14,7 +15,7 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
